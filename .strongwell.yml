@@ -1,0 +1,19 @@
+name: strongwell
+
+version: "1.0"
+
+# define the base environment / VM / image to use
+environment:
+  type: vm      # custom type — you’d need engine support
+  img: "https://mirror.ourhost.az/ubuntu-releases/24.04.3/ubuntu-24.04.3-live-server-amd64.iso/
+
+jobs:
+  show_sys_info:
+    environment: environment
+    steps:
+      - name: update apt and install neofetch
+        run: |
+          apt-get update -y
+          DEBIAN_FRONTEND=noninteractive apt-get install -y neofetch
+      - name: run neofetch
+        run: neofetch
